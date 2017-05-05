@@ -8,10 +8,12 @@
 	<h:outputStylesheet library="css" name="bootstrap.min.css"/>
 </h:head> 
 <body> 
-	<h1>Cadastrar Consultor</h1>
+	
 	
 	<div class="container">
+	<h1>Cadastrar Consultor</h1>
 		<h:form>
+		<h:inputHidden value="#{consultorBean.consultor.codigo}" />
 		<h:messages errorClass="alert alert-danger"
 					infoClass="alert alert-success" />
 		<!-- Nome, cpf e telefone -->

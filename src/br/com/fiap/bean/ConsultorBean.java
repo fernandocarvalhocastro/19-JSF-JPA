@@ -21,18 +21,27 @@ public class ConsultorBean {
 		bo = new ConsultorBO();
 	}
 	
-	public void cadastrar(){
+	public String cadastrar(){
 		FacesMessage msg;
 		try {
-			bo.cadastrar(consultor);
-			msg = new FacesMessage("Cadastrado com sucesso!");
+			if(consultor.getCodigo()==0){
+				bo.cadastrar(consultor);
+				msg = new FacesMessage("Cadastrado com sucesso!");
+			}else{
+				bo.atualizar(consultor);
+				msg = new FacesMessage("Alterado com sucesso!");
+			}
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		} catch (DBException e) {
 			msg = new FacesMessage("Deu Ruim!!!");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			e.printStackTrace();
+			return "index";
 		}
+		//manter a mensagem após o redirect (nova requisição)
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		return "lista-consultor?faces-redirect=true";
 	}
 	
 	public Consultor getConsultor() {
