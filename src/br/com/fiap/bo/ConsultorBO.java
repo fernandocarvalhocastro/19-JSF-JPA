@@ -32,7 +32,7 @@ public class ConsultorBO {
 		return consultor;
 	}
 
-	public void cadastrar(Consultor consultor) {
+	public void cadastrar(Consultor consultor) throws DBException {
 		EntityManager em = fabrica.createEntityManager();
 		ConsultorDAO dao = new ConsultorDAOImpl(em);
 		dao.cadastrar(consultor);
@@ -40,6 +40,8 @@ public class ConsultorBO {
 			dao.salvar();
 		} catch (DBException e) {
 			e.printStackTrace();
+			throw new DBException();
+
 		}finally {
 			em.close();
 		}
