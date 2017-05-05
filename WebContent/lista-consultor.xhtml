@@ -31,7 +31,7 @@
 			</h:column>
 			<h:column>
 				<h:form>
-					<h:commandButton styleClass="btn btn-info" action="index" value="Alterar">
+					<h:commandButton style="margin-right:10px" styleClass="btn btn-info" action="index" value="Alterar">
 						<f:setPropertyActionListener value="#{c}" target="#{consultorBean.consultor}" />
 					</h:commandButton>
 					<h:commandButton styleClass="btn btn-danger" action="#{listaConsultorBean.excluir(c.codigo)}" value="Excluir"/>
