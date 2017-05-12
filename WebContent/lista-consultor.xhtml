@@ -4,11 +4,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head>
-	<h:outputStylesheet library="css" name="bootstrap.css" />
-</h:head> 
-<body> 
-	<div class="container">
+<ui:composition template="_template.xhtml">
+	<ui:define name="corpo">
 		<h1>Listar Consultores</h1>
 				<h:messages errorClass="alert alert-danger"
 					infoClass="alert alert-success" />
@@ -38,6 +35,6 @@
 				</h:form>
 			</h:column>
 		</h:dataTable>
-	</div>
-</body> 
+   </ui:define>
+</ui:composition> 
 </html>
